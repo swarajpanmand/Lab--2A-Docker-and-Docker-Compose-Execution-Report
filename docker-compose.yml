@@ -1,0 +1,42 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: it-asset-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - it-asset-network
+
+  backend:
+    build: ./backend
+    container_name: it-asset-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/it_asset_management
+      - PORT=5000
+    depends_on:
+      - mongodb
+    networks:
+      - it-asset-network
+
+  frontend:
+    build: ./frontend
+    container_name: it-asset-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:5000/api/assets
+    depends_on:
+      - backend
+    networks:
+      - it-asset-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  it-asset-network:
+    driver: bridge
