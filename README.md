@@ -1,5 +1,9 @@
 # Lab- 2A: Docker and Docker Compose Execution Report
 
+**Student Name:** Swaraj Panmand  
+**UCID:** 2023800075  
+**Branch:** CSE ENT1  
+
 ## Overview
 This repository records the executed project and findings for **Lab- 2A: Laboratory on Docker and Docker Compose**. The primary objective of this laboratory was to containerize applications, manage multi-container setups using Docker Compose, and correctly implement Docker features such as networking, volumes, and environment variables.
 
